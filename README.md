@@ -162,6 +162,21 @@ The test suite covers:
 
 ---
 
+## Deployment
+
+The project is configured for deployment from the repository root:
+
+- `npm run build` writes the production site to `dist/`.
+- `base: './'` in `vite.config.js` keeps asset paths relative, so the same build works at a domain root or under a repository subpath.
+- `.github/workflows/deploy.yml` builds and publishes `dist/` to GitHub Pages whenever `main` changes.
+- In the repository settings, set **Pages → Source** to **GitHub Actions** to use that workflow.
+
+For other hosts, use:
+
+- **Build command:** `npm run build`
+- **Output directory:** `dist`
+- **Node version:** 22
+
 ## Engineering integrity and limitations
 
 This is a **model, not a measurement system**.
