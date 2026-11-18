@@ -170,6 +170,7 @@ The project is configured for deployment from the repository root:
 - `base: './'` in `vite.config.js` keeps asset paths relative, so the same build works at a domain root or under a repository subpath.
 - `.github/workflows/deploy.yml` builds and publishes `dist/` to GitHub Pages whenever `main` changes.
 - In the repository settings, set **Pages → Source** to **GitHub Actions** to use that workflow.
+- For branch-based Pages, use branch `gh-pages` and folder `/ (root)`; that branch contains the built site at its root.
 
 For other hosts, use:
 
