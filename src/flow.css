@@ -1,0 +1,248 @@
+/* React Flow overrides — NEXUS system network */
+
+.react-flow {
+  --rf-bg: #0f1418;
+  background: var(--rf-bg);
+}
+
+.react-flow__pane {
+  cursor: default;
+}
+
+.react-flow__pane:active {
+  cursor: grabbing;
+}
+
+.react-flow__background {
+  opacity: 0.9;
+}
+
+.react-flow__edge-path {
+  transition: stroke 160ms ease;
+}
+
+.react-flow__edge.animated path {
+  stroke-dasharray: 5 4;
+  animation: nexus-dash 1.2s linear infinite;
+}
+
+@keyframes nexus-dash {
+  to {
+    stroke-dashoffset: -18;
+  }
+}
+
+.react-flow__arrowhead {
+  fill: currentColor;
+}
+
+.react-flow__node {
+  border-radius: 7px;
+}
+
+.react-flow__node:focus-visible {
+  outline: none;
+}
+
+.react-flow__node:focus-visible .system-node {
+  outline: 1px solid var(--cyan);
+  outline-offset: 2px;
+}
+
+.react-flow__controls {
+  box-shadow: none;
+  border: 1px solid #2b363f;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 10px;
+}
+
+.react-flow__controls-button {
+  width: 22px;
+  height: 22px;
+  background: #151c22;
+  border-bottom: 1px solid #2b363f;
+  color: var(--text-secondary);
+  padding: 3px;
+}
+
+.react-flow__controls-button:hover {
+  background: #1d262e;
+}
+
+.react-flow__controls-button svg {
+  fill: #8996a3;
+  max-width: 10px;
+  max-height: 10px;
+}
+
+.react-flow__controls-button:last-child {
+  border-bottom: 0;
+}
+
+.react-flow__attribution {
+  display: none;
+}
+
+/* Custom system node ------------------------------------------------------ */
+
+.system-node {
+  width: 190px;
+  height: 94px;
+  box-sizing: border-box;
+  background: #151c22;
+  border: 1px solid #2b363f;
+  border-radius: 7px;
+  padding: 8px 10px 7px;
+  font-family: var(--sans);
+  color: var(--text);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 140ms ease, background 140ms ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.system-node::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 11px;
+  bottom: 11px;
+  width: 2px;
+  border-radius: 0 2px 2px 0;
+  background: var(--state, var(--neutral));
+  opacity: 0.85;
+}
+
+.system-node.status-operational {
+  --state: var(--ok);
+}
+
+.system-node.status-warning {
+  --state: var(--warn);
+  border-color: rgba(229, 170, 84, 0.34);
+}
+
+.system-node.status-critical {
+  --state: var(--crit);
+  border-color: rgba(225, 109, 109, 0.4);
+}
+
+.system-node.is-source {
+  background: #171e24;
+}
+
+.system-node.is-selected {
+  border-color: rgba(85, 196, 214, 0.65);
+  box-shadow: 0 0 0 1px rgba(85, 196, 214, 0.18);
+  background: #172027;
+}
+
+.system-node:hover {
+  border-color: #46545f;
+}
+
+.system-node.is-selected:hover {
+  border-color: rgba(85, 196, 214, 0.75);
+}
+
+.node-top {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 16px;
+}
+
+.node-icon {
+  color: var(--text-muted);
+  display: inline-flex;
+}
+
+.system-node.is-selected .node-icon {
+  color: var(--cyan);
+}
+
+.node-code {
+  font-size: 8.5px;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.node-src {
+  font-family: var(--mono);
+  font-size: 6.5px;
+  letter-spacing: 0.06em;
+  color: var(--warn);
+  border: 1px solid rgba(229, 170, 84, 0.35);
+  border-radius: 2px;
+  padding: 0 2px;
+  line-height: 1.5;
+}
+
+.node-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--state, var(--neutral));
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.node-name {
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-top: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.node-bar {
+  height: 3px;
+  background: #232d36;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 7px;
+}
+
+.node-bar span {
+  display: block;
+  height: 100%;
+  background: var(--state, var(--neutral));
+  opacity: 0.85;
+  transition: width 180ms ease;
+}
+
+.node-foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px;
+  margin-top: 4px;
+  white-space: nowrap;
+}
+
+.node-pct {
+  font-size: 9px;
+  color: var(--text-secondary);
+}
+
+.node-links {
+  font-size: 7px;
+  color: #4f5c68;
+  letter-spacing: 0.02em;
+}
+
+.node-handle {
+  width: 3px;
+  height: 3px;
+  min-width: 3px;
+  min-height: 3px;
+  border: 0;
+  background: transparent;
+  opacity: 0;
+  pointer-events: none;
+}
